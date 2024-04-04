@@ -2,7 +2,7 @@
 
 #### A note about the semantic formatting in this tutorial:
 
-- [ ] Check boxes are steps that need to be completed.
+- [X] Check boxes are steps that need to be completed.
 
 Text that looks `like this --for --example` are commands that you should type into your terminal. Or else.
 
@@ -37,17 +37,17 @@ Text that looks `like this --for --example` are commands that you should type in
 
 ---
 
-- [ ] Bundle our app into an image tagged with the name 'colorserver' by running `docker build -t colorserver .`
+- [X] Bundle our app into an image tagged with the name 'colorserver' by running `docker build -t colorserver .`
 
 **Docker will pull the 'node:14-alpine' image down from Dockerhub in order to complete the build. Notice how much faster the pull went compared to 'node:latest'. This is due to the 'alpine' version being so slim**
 
-- [ ] Spin up a new container based on the 'colorserver' image you just built, mapping it to port 8080 on the host. Run `docker run -d -p 8080:8080 colorserver`
+- [X] Spin up a new container based on the 'colorserver' image you just built, mapping it to port 8080 on the host. Run `docker run -d -p 8080:8080 colorserver`
 
-- [ ] Open up your browser and visit `localhost:8080`. Notice that the color of the web page is 'SteelBlue'.
+- [X] Open up your browser and visit `localhost:8080`. Notice that the color of the web page is 'SteelBlue'.
 
-- [ ] Now, pretend you are in a development environment and want to quickly test out several different colors to see which one looks best. Open up 'index.js' and change the color on line 12 from `'SteelBlue'` to the string `'SpringGreen'`
+- [X] Now, pretend you are in a development environment and want to quickly test out several different colors to see which one looks best. Open up 'index.js' and change the color on line 12 from `'SteelBlue'` to the string `'SpringGreen'`
 
-- [ ] Refresh the webpage in your browser. Just as you expect the webpage to present you with a calming pastel shade of green, your heart sinks as your eyes are assaulted with same cold, hard shade of steel blue.
+- [X] Refresh the webpage in your browser. Just as you expect the webpage to present you with a calming pastel shade of green, your heart sinks as your eyes are assaulted with same cold, hard shade of steel blue.
 
 **This will never do;** it would seem that if you want to use containers in your development, every time you make a change to the code you have to take the following steps: Change the code -> Build an image with your code -> Stop and remove the old container -> Remove the old image -> Spin up a container from the new image -> See if you like the change
 
@@ -62,9 +62,9 @@ Text that looks `like this --for --example` are commands that you should type in
 
 ---
 
-- [ ] We can take our already-built colorserver image and use the ` -v` option to mount a volume. The ` -v` option expects two arguments after it. First, the path to the directory you want the spun-up container to reference, and second, the path to the directory inside the container where you want those file changes to be reflected (separated by a colon)
+- [X] We can take our already-built colorserver image and use the ` -v` option to mount a volume. The ` -v` option expects two arguments after it. First, the path to the directory you want the spun-up container to reference, and second, the path to the directory inside the container where you want those file changes to be reflected (separated by a colon)
 
-- [ ] Reading that, you might think that running the command `docker run -d -p 1000:8080 -v ./:/src/app colorserver` would work, right? A relative filepath seemed to work okay for the `COPY` command inside the Dockerfile! And when using the `docker build` command! But you get the following message:
+- [X] Reading that, you might think that running the command `docker run -d -p 1000:8080 -v ./:/src/app colorserver` would work, right? A relative filepath seemed to work okay for the `COPY` command inside the Dockerfile! And when using the `docker build` command! But you get the following message:
 
 ```sh
 $ docker run -d -p 1000:8080 -v ./:/src/app colorserver
@@ -73,7 +73,7 @@ See 'docker run --help'.
 ```
 **As the error message implies, the first argument of the ` -v` option needs to be an absolute path to the directory in question**
 
-- [ ] How do you find the absolute path? Well do I have good news for you! As long as you are cd'd into the directory that you want the absolute path to (in this case the directory with the app's source code), just run the command `pwd`
+- [X] How do you find the absolute path? Well do I have good news for you! As long as you are cd'd into the directory that you want the absolute path to (in this case the directory with the app's source code), just run the command `pwd`
 
 `pwd` stands for 'print working directory' and it does just that. Mine looks like:
 
@@ -93,7 +93,7 @@ docker run -d -p 1000:8080 -v /Users/Dylan/Desktop/Please-Contain-Yourself/4-Con
 
 **Again, yours will look different depending on the path you got from `pwd`**
 
-- [ ] In your browser, go to `localhost:1000` in a new tab. You should notice something amazing... the page is the color 'SpringGreen'! **The container you just spun up reflects a change made in the app's source code that was not present when the image was built!**
+- [X] In your browser, go to `localhost:1000` in a new tab. You should notice something amazing... the page is the color 'SpringGreen'! **The container you just spun up reflects a change made in the app's source code that was not present when the image was built!**
 
 - [ ] Test to make sure that updating the application's source code updates the code running in the container by changing the color variable in 'index.js' to the string 'red'
 
